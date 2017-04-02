@@ -16,5 +16,5 @@ server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 server.post('/stories', function(req, res) {
-    console.log(req.body)
+    console.log(req.body.result.action)
 });
