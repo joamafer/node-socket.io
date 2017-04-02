@@ -11,14 +11,14 @@ const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
 const app = express();
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+var server = app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
 // Socket.IO
-const io = socketIO.listen(http.createServer(app));
+const io = socketIO.listen(server);
 
 io.on('connection', (socket) => {
   console.log('Client connected');
