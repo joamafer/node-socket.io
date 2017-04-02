@@ -26,14 +26,17 @@ var http = require('http');
     response.writeHead(200,{"Content-Type":"text\plain"});
     if(request.method == "GET")
         {
+        	console.log("Recibido GET");
             response.end("received GET request.")
         }
     else if(request.method == "POST")
         {
+        	console.log("Recibido POST");
             response.end("received POST request.");
         }
     else
         {
+        	console.log("Recibido ALGO");
             response.end("Undefined request .");
         }
 });
