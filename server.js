@@ -4,8 +4,6 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 const bodyParser = require('body-parser');
-const http = require('http');
-
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
@@ -18,7 +16,8 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 // Socket.IO
-const io = socketIO.listen();
+var server = app.listen(PORT)
+const io = socketIO.listen(server);
 
 io.on('connection', (socket) => {
   console.log('Client connected');
