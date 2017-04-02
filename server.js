@@ -13,10 +13,10 @@ const server = express()
 
 var bodyParser = require('body-parser')
 server.use(bodyParser.json());       // to support JSON-encoded bodies
-server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-  extended: true
-}));
+// server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+//   extended: true
+// }));
 
-server.post('/test-page', function(req, res) {
-    console.log("recibido algo!!!!!!")
-});
+// server.post('/test-page', function(req, res) {
+//     console.log("recibido algo!!!!!!")
+// });
