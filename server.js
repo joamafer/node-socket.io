@@ -15,6 +15,6 @@ server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-// server.post('/test-page', function(req, res) {
-//     console.log("recibido algo!!!!!!")
-// });
+server.post('/stories', function(req, res) {
+    console.log("recibido algo!!!!!!")
+});
