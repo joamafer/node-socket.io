@@ -11,16 +11,12 @@ const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-// server.get('/', function(req, res){
-//     console.log('JOSE GET /')
-//     var html = fs.readFileSync('index.html');
-//     res.writeHead(200, {'Content-Type': 'text/html'});
-//     res.end(html);
-// });
+var bodyParser = require('body-parser')
+server.use(bodyParser.json());       // to support JSON-encoded bodies
+server.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
 
-// server.post('/', function(req, res){
-//     console.log('JOSE POST /');
-//     console.dir(req.body);
-//     res.writeHead(200, {'Content-Type': 'text/html'});
-//     res.end('thanks');
-// });
+server.post('/test-page', function(req, res) {
+    console.log("recibido algo!!!!!!")
+});
