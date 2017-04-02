@@ -4,9 +4,6 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 const bodyParser = require('body-parser');
-const http = require('http');
-
-
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
@@ -26,6 +23,5 @@ io.on('connection', (socket) => {
 });
 
 app.post('/stories', function(req, res) {
-    console.log(req.body.result.action);
     io.emit('action', req.body.result.action);
 });
