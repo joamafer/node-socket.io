@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
 setInterval(() => io.emit('guarra', new Date().toTimeString()), 1000);
 
 var http = require('http');
-    var server = http.createServer ( function(request,response){
+    var server2 = http.createServer ( function(request,response){
 
     response.writeHead(200,{"Content-Type":"text\plain"});
     if(request.method == "GET")
@@ -38,5 +38,5 @@ var http = require('http');
         }
 });
 
-server.listen(8000);
-console.log("Server running on port 8000");
+server2.listen(8000);
+console.log("Server running on port 8000 jose");
