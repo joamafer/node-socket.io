@@ -41,5 +41,6 @@ var http = require('http');
         }
 });
 
-server2.listen(8000);
-console.log("Server running on port 8000 jose");
+server2.listen(8000, function() {
+    console.log("Server running on port 8000 jose");
+});
