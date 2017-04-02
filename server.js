@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 // Socket.IO
-const io = socketIO.listen(http.createServer(app));
+const io = socketIO.listen();
 
 io.on('connection', (socket) => {
   console.log('Client connected');
