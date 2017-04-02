@@ -4,12 +4,13 @@ const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
 const bodyParser = require('body-parser');
+const http = require('http');
+
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
 const app = express();
-//app.use((req, res) => res.sendFile(INDEX) )
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 // Socket.IO
-const io = socketIO(app);
+const io = socketIO.listen(http.createServer(app));
 
 io.on('connection', (socket) => {
   console.log('Client connected');
