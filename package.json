@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "4.13.4",
-    "socket.io": "1.4.6",
+    "express": "4.15.2",
+    "socket.io": "1.7.3",
     "body-parser": "1.17.1"
   }
 }
