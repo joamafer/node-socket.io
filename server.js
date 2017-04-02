@@ -2,14 +2,15 @@
 
 const express = require('express');
 const socketIO = require('socket.io');
-const path = require('path');
+const fs = require('fs');
+// const path = require('path');
 
 // const PORT = process.env.PORT || 3000;
 // const INDEX = path.join(__dirname, 'index.html');
 
-// const server = express()
-//   .use((req, res) => res.sendFile(INDEX) )
-//   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 // const io = socketIO(server);
 
@@ -20,27 +21,19 @@ const path = require('path');
 
 // setInterval(() => io.emit('guarra', new Date().toTimeString()), 1000);
 
-var http = require('http');
-var server2 = http.createServer ( function(request,response){
+server.use(express.bodyParser());
 
-    response.writeHead(200,{"Content-Type":"text\plain"});
-    if(request.method == "GET")
-        {
-        	console.log("Recibido GET");
-            response.end("received GET request.")
-        }
-    else if(request.method == "POST")
-        {
-        	console.log("Recibido POST");
-            response.end("received POST request.");
-        }
-    else
-        {
-        	console.log("Recibido ALGO");
-            response.end("Undefined request .");
-        }
+server.get('/', function(req, res){
+    console.log('JOSE GET /')
+    //var html = '<html><body><form method="post" action="http://localhost:3000">Name: <input type="text" name="name" /><input type="submit" value="Submit" /></form></body>';
+    var html = fs.readFileSync('index.html');
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end(html);
 });
 
-server2.listen(3000, function() {
-    console.log("Server running on port 3000 jose");
+server.post('/', function(req, res){
+    console.log('JOSE POST /');
+    console.dir(req.body);
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.end('thanks');
 });
