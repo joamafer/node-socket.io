@@ -22,6 +22,6 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-app.post('/stories', function(req, res) {
+app.post('/webhook', function(req, res) {
     io.emit('action', req.body.result.action);
 });
