@@ -23,5 +23,7 @@ io.on('connection', (socket) => {
 });
 
 app.post('/webhook', function(req, res) {
+	console.log("My action:");
+	console.log(req.body.result.action);
     io.emit('action', req.body.result.action);
 });
